@@ -1,0 +1,13 @@
+[Unit]
+Description=Activate TRIM for SSD
+Requires=local-fs.target
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /usr/local/bin/trim.py ENTER_DEVICE_HERE
+RemainAfterExit=true
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
